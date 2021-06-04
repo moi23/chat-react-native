@@ -10,6 +10,7 @@ import { TextButton } from '../../util/TextButton';
 import { Button } from '../../util/Button';
 import { Message } from '../../util/Messages';
 import { TextMessage } from '../../util/TextMessage';
+import * as Animatable from 'react-native-animatable';
 
 const Login = () => {
   const [bgColor, setbgColor] = useState('white');
@@ -51,24 +52,26 @@ const Login = () => {
               return (
                 <>
                   {indice ? (
-                    <WrapperContainer
-                      key={`${indice} - ${new Date()}`}
-                      style={{
-                        width: '100%',
-                        display: 'flex',
-                        flexDirection: 'row-reverse',
-                      }}
-                    >
-                      <Message
+                    <Animatable.View animation="fadeInRight" duration={800}>
+                      <WrapperContainer
+                        // key={`${indice} - ${new Date()}`}
                         style={{
-                          marginTop: 20,
-                          minWidth: 100,
-                          maxWidth: 300,
+                          width: '100%',
+                          display: 'flex',
+                          flexDirection: 'row-reverse',
                         }}
                       >
-                        <TextMessage>{indice}</TextMessage>
-                      </Message>
-                    </WrapperContainer>
+                        <Message
+                          style={{
+                            marginTop: 20,
+                            minWidth: 100,
+                            maxWidth: 300,
+                          }}
+                        >
+                          <TextMessage>{indice}</TextMessage>
+                        </Message>
+                      </WrapperContainer>
+                    </Animatable.View>
                   ) : (
                     <></>
                   )}
